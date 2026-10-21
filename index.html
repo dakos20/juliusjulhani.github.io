@@ -1,0 +1,1194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Julius Alistre Julhani</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+
+
+/* Layout concept: a case file. Dark navy hero and footer bands frame light "file" sections.
+   Evidence-marker yellow is the single bright accent; police-tape stripe appears once above the footer and once under the hero. */
+:root {
+  --bg: #f3f5f9;
+  --bg-alt: #e9eef5;
+  --surface: #ffffff;
+  --ink: #101c30;
+  --muted: #4a586f;
+  --line: #d3dae6;
+  --link: #1b4a96;
+  --bar: #1b4a96;
+  --mark: #f2b705;
+  --mark-hover: #ffc92e;
+  --mark-ink: #1a1400;
+  --navy: #0f1b2d;
+  --on-navy: #eef2f8;
+  --on-navy-dim: #b4c0d4;
+  --navy-line: #2a3b57;
+  --ring: rgba(27, 74, 150, 0.28);
+  --ill-bg: #e6ebf3;
+  --ill-line: #4d5f7c;
+  --font-display: 'Barlow Condensed', 'Arial Narrow', 'Helvetica Neue', sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a1322;
+    --bg-alt: #0e1a2e;
+    --surface: #121f35;
+    --ink: #e8edf5;
+    --muted: #9eadc3;
+    --line: #25354f;
+    --link: #8db8ff;
+    --bar: #6ea3ff;
+    --navy: #070e1a;
+    --navy-line: #20304a;
+    --ring: rgba(141, 184, 255, 0.35);
+    --ill-bg: #0c1727;
+    --ill-line: #8ea4c4;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0a1322;
+  --bg-alt: #0e1a2e;
+  --surface: #121f35;
+  --ink: #e8edf5;
+  --muted: #9eadc3;
+  --line: #25354f;
+  --link: #8db8ff;
+  --bar: #6ea3ff;
+  --navy: #070e1a;
+  --navy-line: #20304a;
+  --ring: rgba(141, 184, 255, 0.35);
+  --ill-bg: #0c1727;
+  --ill-line: #8ea4c4;
+  color-scheme: dark;
+}
+
+/* Map Bootstrap's own variables onto the tokens */
+:root {
+  --bs-body-bg: var(--bg);
+  --bs-body-color: var(--ink);
+  --bs-heading-color: var(--ink);
+  --bs-border-color: var(--line);
+  --bs-link-color: var(--link);
+  --bs-link-hover-color: var(--link);
+  --bs-secondary-color: var(--muted);
+  --bs-body-font-family: var(--font-body);
+}
+
+html { scroll-padding-top: 4.5rem; }
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  background: var(--bg);
+  color: var(--ink);
+  padding-left: 0;
+  padding-right: 0;
+  overflow-x: clip;
+}
+a { color: var(--link); text-underline-offset: 3px; }
+a:hover { color: var(--link); }
+h1, h2, h3, h4, h5, h6 { color: var(--ink); text-wrap: balance; }
+p { color: var(--ink); }
+.container {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
+.band :focus-visible { outline-color: var(--mark); }
+.visually-hidden-focusable:focus { z-index: 2000; }
+
+/* Shared type roles */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 0.65rem;
+  height: 0.65rem;
+  background: var(--mark);
+  flex: none;
+}
+.band .eyebrow { color: var(--on-navy-dim); }
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+.section-lead { max-width: 60ch; color: var(--muted); margin: 0 0 2.5rem; }
+.mono { font-family: var(--font-mono); }
+.ico {
+  width: 1.15em;
+  height: 1.15em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: -0.2em;
+  flex: none;
+}
+
+/* Navbar */
+.site-nav {
+  background: var(--navy);
+  border-bottom: 1px solid var(--navy-line);
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 1030;
+  padding-block: 0.5rem;
+}
+.site-nav .navbar-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--on-navy);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: var(--mark);
+  color: var(--mark-ink);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.site-nav .nav-link {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--on-navy-dim);
+  padding: 0.55rem 0.7rem;
+}
+.site-nav .nav-link:hover { color: var(--on-navy); }
+.site-nav .nav-link.active { color: var(--mark); }
+.site-nav .navbar-toggler { border-color: rgba(238, 242, 248, 0.4); }
+.site-nav .navbar-toggler:focus { box-shadow: 0 0 0 3px rgba(242, 183, 5, 0.45); }
+.theme-btn {
+  background: transparent;
+  border: 1px solid var(--navy-line);
+  color: var(--on-navy-dim);
+  border-radius: 3px;
+  padding: 0.35rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.theme-btn:hover { color: var(--on-navy); border-color: var(--on-navy-dim); }
+
+/* Buttons */
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  border-radius: 3px;
+  padding: 0.7rem 1.25rem;
+}
+.btn-mark {
+  background: var(--mark);
+  border: 2px solid var(--mark);
+  color: var(--mark-ink);
+}
+.btn-mark:hover, .btn-mark:focus-visible { background: var(--mark-hover); border-color: var(--mark-hover); color: var(--mark-ink); }
+.btn-ghost {
+  background: transparent;
+  border: 2px solid var(--on-navy-dim);
+  color: var(--on-navy);
+}
+.btn-ghost:hover { border-color: var(--on-navy); color: var(--on-navy); background: rgba(238, 242, 248, 0.08); }
+.btn-solid {
+  background: var(--navy);
+  border: 2px solid var(--navy);
+  color: var(--on-navy);
+}
+.btn-solid:hover { background: var(--navy); color: var(--on-navy); border-color: var(--mark); }
+.btn-line {
+  background: transparent;
+  border: 2px solid var(--line);
+  color: var(--ink);
+}
+.btn-line:hover { border-color: var(--ink); color: var(--ink); }
+
+/* Hero */
+.band { background: var(--navy); color: var(--on-navy); }
+.band p, .band h1, .band h2, .band h3 { color: var(--on-navy); }
+.hero { padding-block: clamp(2.5rem, 6vw, 5rem); }
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3.4rem, 11vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+.hero .role {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 3.2vw, 1.9rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mark);
+  margin: 0 0 1.25rem;
+}
+.hero .lede { max-width: 52ch; font-size: 1.08rem; color: var(--on-navy-dim); margin-bottom: 1.75rem; }
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem 1.5rem;
+  margin: 2.25rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--navy-line);
+}
+.facts dt {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--on-navy-dim);
+  font-weight: 400;
+}
+.facts dd { margin: 0.15rem 0 0; font-weight: 500; color: var(--on-navy); }
+.photo-wrap {
+  position: relative;
+  max-width: 340px;
+  margin-inline: auto;
+  padding: 0 14px 14px 0;
+}
+.photo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 14px 0 0 14px;
+  background: var(--mark);
+}
+.photo-wrap img {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--navy-line);
+}
+.tape {
+  height: 12px;
+  background: repeating-linear-gradient(135deg, var(--mark) 0 14px, #0f1b2d 14px 28px);
+}
+
+/* Sections */
+.section { padding-block: clamp(3rem, 7vw, 5.5rem); scroll-margin-top: 4.5rem; }
+.section.alt { background: var(--bg-alt); }
+.card {
+  --bs-card-bg: var(--surface);
+  --bs-card-border-color: var(--line);
+  --bs-card-color: var(--ink);
+  --bs-card-cap-bg: transparent;
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--ink);
+}
+.card-pad { padding: 1.5rem; }
+.card h3, .card h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.card-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.9rem;
+  display: block;
+}
+.bio p { max-width: 62ch; }
+.casefile dl { margin: 0; display: grid; gap: 0.9rem; }
+.casefile dt {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+}
+.casefile dd { margin: 0.1rem 0 0; font-weight: 500; }
+.casefile { border-top: 6px solid var(--mark); }
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
+.timeline li { padding-left: 1rem; border-left: 3px solid var(--line); }
+.timeline strong { display: block; }
+.timeline span { color: var(--muted); font-size: 0.92rem; }
+.plain-list { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.5rem; }
+.plain-list li::marker { color: var(--mark); }
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+.chip {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  border-radius: 2px;
+  color: var(--ink);
+}
+
+/* Skills */
+.skill-row + .skill-row { margin-top: 1.15rem; }
+.skill-head { display: flex; justify-content: space-between; gap: 1rem; font-weight: 500; margin-bottom: 0.35rem; }
+.skill-head .pct { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); }
+.progress {
+  --bs-progress-bg: var(--line);
+  --bs-progress-bar-bg: var(--bar);
+  height: 0.6rem;
+  border-radius: 0;
+  background: var(--line);
+}
+.progress-bar { background: var(--bar); }
+.strength { display: flex; gap: 0.85rem; align-items: flex-start; }
+.strength + .strength { margin-top: 1.1rem; }
+.strength .ico { width: 1.5rem; height: 1.5rem; color: var(--link); margin-top: 0.15rem; }
+.strength h4 { font-size: 1.15rem; margin: 0 0 0.15rem; }
+.strength p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+
+/* Projects */
+.project figure { margin: 0; border-bottom: 1px solid var(--line); }
+.project svg.ill { display: block; width: 100%; height: auto; }
+.ill text { font-family: var(--font-mono); font-size: 11px; fill: var(--ill-line); letter-spacing: 0.08em; }
+.ill .mk text { fill: #1a1400; font-size: 12px; font-weight: 500; letter-spacing: 0; text-anchor: middle; }
+.project .card-body { padding: 1.4rem 1.5rem 1.6rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.project h3 { font-size: 1.7rem; margin: 0; line-height: 1.05; }
+.project p { margin: 0; }
+.role-line { border-top: 1px dashed var(--line); padding-top: 0.75rem; font-size: 0.94rem; }
+.role-line b { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.15rem; }
+.exhibit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.exhibit i {
+  font-style: normal;
+  background: var(--mark);
+  color: var(--mark-ink);
+  padding: 0.1rem 0.45rem;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+/* Achievements */
+.award { height: 100%; display: flex; flex-direction: column; gap: 0.6rem; padding: 1.4rem 1.5rem; }
+.award .kind {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--link);
+}
+.award h3 { font-size: 1.45rem; margin: 0; line-height: 1.1; }
+.award p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+.award .when { margin-top: auto; font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+
+/* Resume */
+.sheet { border-radius: 4px; border: 1px solid var(--line); background: var(--surface); }
+.sheet-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: 1.75rem 1.75rem 1.25rem;
+  border-bottom: 3px solid var(--navy);
+}
+.sheet-head h3 { font-family: var(--font-display); font-weight: 700; font-size: 2.4rem; text-transform: uppercase; margin: 0; line-height: 1; }
+.sheet-head p { margin: 0.2rem 0 0; color: var(--muted); }
+.sheet-body { padding: 1.75rem; }
+.sheet h4 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--line);
+  margin: 0 0 1rem;
+}
+.sheet .entry + .entry { margin-top: 1.1rem; }
+.sheet .entry strong { display: block; }
+.sheet .entry .meta { color: var(--muted); font-size: 0.9rem; }
+.sheet .entry p { margin: 0.25rem 0 0; font-size: 0.95rem; }
+.sheet-block + .sheet-block { margin-top: 1.75rem; }
+.contact-lines { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; font-size: 0.94rem; }
+.contact-lines li { display: flex; gap: 0.6rem; align-items: flex-start; overflow-wrap: anywhere; }
+.contact-lines .ico { margin-top: 0.25rem; color: var(--link); }
+
+/* Contact */
+.contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
+.contact-list li { display: flex; gap: 0.9rem; align-items: flex-start; min-width: 0; }
+.contact-list .ico { width: 1.4rem; height: 1.4rem; color: var(--link); margin-top: 0.2rem; }
+.contact-list small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.contact-list .val { overflow-wrap: anywhere; font-weight: 500; }
+.copy-btn {
+  margin-left: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  background: transparent;
+  color: var(--link);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 0.1rem 0.5rem;
+}
+.copy-btn:hover { border-color: var(--link); }
+.form-label { font-weight: 500; font-size: 0.92rem; }
+.form-control {
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 0.65rem 0.8rem;
+}
+.form-control::placeholder { color: var(--muted); opacity: 0.8; }
+.form-control:focus { background: var(--bg); color: var(--ink); border-color: var(--link); box-shadow: 0 0 0 4px var(--ring); }
+.form-control:disabled { background: var(--bg-alt); }
+.was-validated .form-control:invalid { border-color: #c0392b; }
+.invalid-feedback { color: #c0392b; }
+:root[data-theme="dark"] .invalid-feedback, :root[data-theme="dark"] .was-validated .form-control:invalid { color: #ff8f80; border-color: #ff8f80; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .invalid-feedback { color: #ff8f80; }
+  :root:not([data-theme="light"]) .was-validated .form-control:invalid { border-color: #ff8f80; }
+}
+.form-note {
+  border-left: 4px solid var(--mark);
+  background: var(--bg);
+  padding: 0.8rem 1rem;
+  border-radius: 0 3px 3px 0;
+  font-size: 0.94rem;
+}
+.social { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+.social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--surface);
+}
+.social a:hover { border-color: var(--link); }
+
+/* Footer */
+.site-footer { padding-block: 2rem 2.25rem; }
+.site-footer .inner { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; align-items: center; }
+.site-footer p { margin: 0; color: var(--on-navy-dim); font-size: 0.9rem; }
+.site-footer .foot-name { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--on-navy); }
+.site-footer a { color: var(--on-navy-dim); }
+.site-footer a:hover { color: var(--mark); }
+.foot-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; list-style: none; margin: 0; padding: 0; font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+@media (max-width: 575.98px) {
+  .sheet-head, .sheet-body, .card-pad { padding-left: 1.15rem; padding-right: 1.15rem; }
+  .btn { width: 100%; }
+  .btn-row .btn { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.2 13.9 7 23 12 20 17 23 15.8 13.9"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-contrast" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<a class="visually-hidden-focusable btn btn-mark position-absolute m-2" href="#home">Skip to content</a>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar navbar-expand-lg site-nav band" data-bs-theme="dark" aria-label="Main navigation">
+  <div class="container">
+    <a class="navbar-brand" href="#home"><span class="brand-mark" aria-hidden="true">JJ</span>Julius julhani</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center" id="mainNav">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+        <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+          <button class="theme-btn" id="themeToggle" type="button" aria-label="Switch between light and dark theme"><svg class="ico" aria-hidden="true"><use href="#i-contrast"/></svg>Theme</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ============ HOME ============ -->
+<header class="hero band" id="home">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7 order-2 order-lg-1">
+        <p class="eyebrow">Portfolio &middot; Class of 2027</p>
+        <h1>Julius Julhani</h1>
+        <p class="role">BS Criminology Student</p>
+        <p class="lede">I study how crimes are investigated, solved and prevented. I want to build a career in criminal investigation and forensic science, and help communities stay safe through careful, evidence-based work.</p>
+        <div class="d-flex flex-wrap gap-3 btn-row">
+          <a class="btn btn-mark" href="#projects">View Projects</a>
+          <a class="btn btn-ghost" href="#resume">View Resume</a>
+          <a class="btn btn-ghost" href="#contact">Contact Me</a>
+        </div>
+        <dl class="facts">
+          <div><dt>Degree</dt><dd>BS Criminology</dd></div>
+          <div><dt>AMMC</dt><dd>Dr. Aurelio Mendoza Memorial College</dd></div>
+          <div><dt>Focus</dt><dd>Investigation &amp; forensics</dd></div>
+          <div><dt>Graduating</dt><dd>2027</dd></div>
+        </dl>
+      </div>
+      <div class="col-lg-5 order-1 order-lg-2">
+        <div class="photo-wrap">
+          <!-- Your photo goes in the "images" folder and must be named profile.jpg.
+               If the file is missing, the grey placeholder shows instead. -->
+          <img src="images/profile.jpg" alt="Profile photo of Julius Alistre Julhani" width="400" height="500"
+               onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 500%27%3E%3Crect width=%27400%27 height=%27500%27 fill=%27%231b2c48%27/%3E%3Ccircle cx=%27200%27 cy=%27190%27 r=%2778%27 fill=%27%2395a6c0%27/%3E%3Cpath d=%27M60 500c0-110 62-190 140-190s140 80 140 190z%27 fill=%27%2395a6c0%27/%3E%3C/svg%3E';">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="tape" aria-hidden="true"></div>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <p class="eyebrow">Case file &middot; Background</p>
+    <h2 class="section-title" id="about-title">About Me</h2>
+    <p class="section-lead">Who I am, where I study and where I want my career to go.</p>
+
+    <div class="row g-4">
+      <div class="col-lg-7 bio">
+        <p>I am a fourth-year Bachelor of Science in Criminology student who likes puzzles that need patience and proof. What drew me to this field is how much of justice depends on small, carefully handled details: a measurement, a note, a print on a surface.</p>
+        <p>Through my courses I have practiced crime scene documentation, fingerprint classification, report writing and court testimony. Outside class I volunteer in community safety drives, because prevention starts with people knowing their rights and the people who protect them.</p>
+        <p>I work best in a team, I write clear reports, and I stay calm when a task gets hard.</p>
+      </div>
+      <div class="col-lg-5">
+        <div class="card casefile card-pad h-100">
+          <span class="card-label">Personal information</span>
+          <dl>
+            <div><dt>Full name</dt><dd>Julius Alistre Julhani</dd></div>
+            <div><dt>Program</dt><dd>Bachelor of Science in Criminology</dd></div>
+            <div><dt>School</dt><dd>Dr. Aurelio Mendoza Memorial Colleges, College of Criminology</dd></div>
+            <div><dt>Year level</dt><dd>4th year (AY 2026&ndash;2027)</dd></div>
+            <div><dt>Languages</dt><dd>Filipino, English</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-1">
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-pad h-100">
+          <span class="card-label">Educational background</span>
+          <ul class="timeline">
+            <li><strong>BS Criminology</strong><span>Dr. Aurelio Mendoza Memorial Colleges &middot; 2023 to present</span></li>
+            <li><strong>Senior High School, HUMSS strand</strong><span>Loyola High School &middot; 2021 to 2023 &middot; With Honors</span></li>
+            <li><strong>Junior High School</strong><span>Loyola High School &middot; 2017 to 2021</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-pad h-100">
+          <span class="card-label">Career goals</span>
+          <ul class="plain-list">
+            <li>Pass the Criminologist Licensure Examination in 2027.</li>
+            <li>Start a career as a crime scene investigator or forensic technician.</li>
+            <li>Take graduate studies in forensic science or criminal justice.</li>
+            <li>Serve in community-based crime prevention programs.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <div class="card card-pad h-100">
+          <span class="card-label">Personal interests</span>
+          <ul class="chips">
+            <li class="chip">Forensic science</li>
+            <li class="chip">Case studies</li>
+            <li class="chip">Photography</li>
+            <li class="chip">Running</li>
+            <li class="chip">Volunteering</li>
+            <li class="chip">Cooking</li>
+            <li class="chip">Reading</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="section alt" id="skills" aria-labelledby="skills-title">
+  <div class="container">
+    <p class="eyebrow">Case file &middot; Capabilities</p>
+    <h2 class="section-title" id="skills-title">Skills</h2>
+    <p class="section-lead">What I can do today, built through coursework, training and practicum.</p>
+
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="card card-pad h-100">
+          <span class="card-label">Professional skills</span>
+
+          <div class="skill-row">
+            <div class="skill-head"><span>Report Writing</span><span class="pct">90%</span></div>
+            <div class="progress" role="progressbar" aria-label="Report Writing" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:90%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-head"><span>Critical Thinking &amp; Problem Solving</span><span class="pct">88%</span></div>
+            <div class="progress" role="progressbar" aria-label="Critical Thinking and Problem Solving" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:88%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-head"><span>Criminological Research</span><span class="pct">85%</span></div>
+            <div class="progress" role="progressbar" aria-label="Criminological Research" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:85%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-head"><span>Communication</span><span class="pct">85%</span></div>
+            <div class="progress" role="progressbar" aria-label="Communication" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:85%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-head"><span>Crime Scene Documentation</span><span class="pct">80%</span></div>
+            <div class="progress" role="progressbar" aria-label="Crime Scene Documentation" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:80%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-head"><span>Leadership</span><span class="pct">80%</span></div>
+            <div class="progress" role="progressbar" aria-label="Leadership" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:80%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-head"><span>Computer Skills (Microsoft Office)</span><span class="pct">75%</span></div>
+            <div class="progress" role="progressbar" aria-label="Computer Skills" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:75%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="card card-pad mb-4">
+          <span class="card-label">Core strengths</span>
+          <div class="strength">
+            <svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>
+            <div><h4>Attention to detail</h4><p>I log measurements, times and conditions the way a scene log requires.</p></div>
+          </div>
+          <div class="strength">
+            <svg class="ico" aria-hidden="true"><use href="#i-users"/></svg>
+            <div><h4>Teamwork under pressure</h4><p>I coordinate roles in group exercises and keep everyone on schedule.</p></div>
+          </div>
+          <div class="strength">
+            <svg class="ico" aria-hidden="true"><use href="#i-edit"/></svg>
+            <div><h4>Clear, factual writing</h4><p>I write reports that a reader can verify line by line.</p></div>
+          </div>
+        </div>
+        <div class="card card-pad">
+          <span class="card-label">Technical toolkit</span>
+          <ul class="chips">
+            <li class="chip">Microsoft Word</li>
+            <li class="chip">Excel</li>
+            <li class="chip">PowerPoint</li>
+            <li class="chip">Canva</li>
+            <li class="chip">Evidence photography</li>
+            <li class="chip">Fingerprint dusting</li>
+            <li class="chip">Scene sketching</li>
+            <li class="chip">Standard first aid</li>
+            <li class="chip">Public speaking</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section" id="projects" aria-labelledby="projects-title">
+  <div class="container">
+    <p class="eyebrow">Case file &middot; Exhibits</p>
+    <h2 class="section-title" id="projects-title">Projects &amp; Works</h2>
+    <p class="section-lead">Four completed activities from my criminology coursework and community work.</p>
+
+    <div class="row g-4">
+
+      <!-- Exhibit A -->
+      <div class="col-md-6">
+        <article class="card project h-100">
+          <figure>
+            <svg class="ill" viewBox="0 0 400 240" role="img" aria-label="Floor plan sketch of a room with three numbered evidence markers and a measured distance line">
+              <rect width="400" height="240" fill="var(--ill-bg)"/>
+              <text x="40" y="22">SCENE SKETCH &middot; NOT TO SCALE</text>
+              <g fill="none" stroke="var(--ill-line)" stroke-width="3" stroke-linecap="square">
+                <rect x="40" y="34" width="320" height="176"/>
+                <path d="M200 34V92M200 134V210M40 124H108M148 124H200"/>
+              </g>
+              <path d="M200 92a42 42 0 0 1 -42 42" fill="none" stroke="var(--ill-line)" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <g fill="none" stroke="var(--ill-line)" stroke-width="1.5">
+                <path d="M62 190H186" stroke-dasharray="5 4"/>
+                <path d="M62 184v12M186 184v12"/>
+              </g>
+              <text x="124" y="182" text-anchor="middle">4.2 m</text>
+              <circle cx="262" cy="86" r="26" fill="none" stroke="var(--ill-line)" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <g class="mk">
+                <circle cx="88" cy="70" r="12" fill="#f2b705"/><text x="88" y="74">1</text>
+                <circle cx="262" cy="86" r="12" fill="#f2b705"/><text x="262" y="90">2</text>
+                <circle cx="304" cy="164" r="12" fill="#f2b705"/><text x="304" y="168">3</text>
+              </g>
+            </svg>
+          </figure>
+          <div class="card-body">
+            <span class="exhibit"><i>Exhibit A</i> Criminalistics &middot; 2025</span>
+            <h3>Crime Scene Sketch and Documentation</h3>
+            <p>Documented a staged scene with a rough sketch, measurements, numbered evidence markers and a written scene log, then turned the notes into a final scaled sketch.</p>
+            <div class="role-line"><b>My role</b>Team lead. I sketched the scene, took the measurements and compiled the scene log.</div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Exhibit B -->
+      <div class="col-md-6">
+        <article class="card project h-100">
+          <figure>
+            <svg class="ill" viewBox="0 0 400 240" role="img" aria-label="Fingerprint ridge pattern with core and delta points marked">
+              <rect width="400" height="240" fill="var(--ill-bg)"/>
+              <text x="20" y="26">PATTERN &middot; ULNAR LOOP</text>
+              <g fill="none" stroke="var(--ill-line)" stroke-width="3.5" stroke-linecap="round">
+                <ellipse cx="200" cy="124" rx="14" ry="20"/>
+                <ellipse cx="200" cy="124" rx="30" ry="42" stroke-dasharray="150 12"/>
+                <ellipse cx="200" cy="124" rx="46" ry="64" stroke-dasharray="230 10 40 12"/>
+                <ellipse cx="200" cy="124" rx="62" ry="86" stroke-dasharray="300 14"/>
+                <ellipse cx="200" cy="124" rx="78" ry="104" stroke-dasharray="360 12 70 10"/>
+              </g>
+              <circle cx="200" cy="112" r="6" fill="#f2b705"/>
+              <text x="214" y="108">CORE</text>
+              <polygon points="302,196 316,218 288,218" fill="#f2b705"/>
+              <text x="324" y="214">DELTA</text>
+            </svg>
+          </figure>
+          <div class="card-body">
+            <span class="exhibit"><i>Exhibit B</i> Dactylography &middot; 2025</span>
+            <h3>Fingerprint Classification Study</h3>
+            <p>Lifted, photographed and classified latent and rolled prints into loop, whorl and arch patterns, then wrote a comparison report listing the ridge characteristics I matched.</p>
+            <div class="role-line"><b>My role</b>Individual work. I dusted the prints, classified the patterns and wrote the report.</div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Exhibit C -->
+      <div class="col-md-6">
+        <article class="card project h-100">
+          <figure>
+            <svg class="ill" viewBox="0 0 400 240" role="img" aria-label="Balance scales of justice on a base">
+              <rect width="400" height="240" fill="var(--ill-bg)"/>
+              <text x="20" y="26">MOCK TRIAL &middot; COURTROOM EXERCISE</text>
+              <g fill="none" stroke="var(--ill-line)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M200 58V196"/>
+                <path d="M146 204H254"/>
+                <path d="M110 76H290"/>
+                <path d="M110 76L82 140M110 76L138 140"/>
+                <path d="M290 76L262 140M290 76L318 140"/>
+                <path d="M72 140H148A38 24 0 0 1 72 140Z"/>
+                <path d="M252 140H328A38 24 0 0 1 252 140Z"/>
+              </g>
+              <circle cx="200" cy="52" r="9" fill="#f2b705"/>
+            </svg>
+          </figure>
+          <div class="card-body">
+            <span class="exhibit"><i>Exhibit C</i> Court Testimony &middot; 2026</span>
+            <h3>Mock Trial: People v. Cruz</h3>
+            <p>Prepared and presented a staged criminal trial built from case facts and evidence, covering direct examination, cross-examination and closing arguments before a student judge.</p>
+            <div class="role-line"><b>My role</b>Prosecution team. I researched the case and conducted the direct examination of two witnesses.</div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Exhibit D -->
+      <div class="col-md-6">
+        <article class="card project h-100">
+          <figure>
+            <svg class="ill" viewBox="0 0 400 240" role="img" aria-label="Street map with a dashed safe-zone circle and location pins">
+              <rect width="400" height="240" fill="var(--ill-bg)"/>
+              <text x="20" y="26">SAFETY MAP &middot; BARANGAY DRIVE</text>
+              <g stroke="var(--ill-line)" stroke-width="9" opacity="0.32" fill="none">
+                <path d="M0 70H400M0 130H400M0 190H400"/>
+                <path d="M90 36V240M200 36V240M310 36V240"/>
+              </g>
+              <circle cx="200" cy="130" r="72" fill="none" stroke="#f2b705" stroke-width="3.5" stroke-dasharray="8 6"/>
+              <g stroke="var(--ill-line)" stroke-width="2" fill="#f2b705">
+                <circle cx="148" cy="70" r="9"/>
+                <circle cx="258" cy="130" r="9"/>
+                <circle cx="200" cy="190" r="9"/>
+                <circle cx="90" cy="130" r="9"/>
+                <circle cx="310" cy="70" r="9"/>
+              </g>
+              <circle cx="200" cy="130" r="5" fill="var(--ill-line)"/>
+            </svg>
+          </figure>
+          <div class="card-body">
+            <span class="exhibit"><i>Exhibit D</i> Community Relations &middot; 2026</span>
+            <h3>Barangay Safety Awareness Campaign</h3>
+            <p>Planned an information drive on crime prevention, cyber safety and emergency hotlines, with posters, a safe-zone map and a short talk for residents.</p>
+            <div class="role-line"><b>My role</b>Project coordinator. I led the planning, designed the posters and gave the closing talk.</div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACHIEVEMENTS ============ -->
+<section class="section alt" id="achievements" aria-labelledby="ach-title">
+  <div class="container">
+    <p class="eyebrow">Case file &middot; Record</p>
+    <h2 class="section-title" id="ach-title">Achievements &amp; Certificates</h2>
+    <p class="section-lead">Awards, training and seminars that support my path in criminology.</p>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <article class="card award">
+          <span class="kind"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>School achievement</span>
+          <h3>Dean&rsquo;s Lister</h3>
+          <p>Recognized for academic excellence in the College of Criminology.</p>
+          <span class="when">AY 2024&ndash;2025</span>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <article class="card award">
+          <span class="kind"><svg class="ico" aria-hidden="true"><use href="#i-award"/></svg>Award</span>
+          <h3>2nd Place, Criminology Quiz Bowl</h3>
+          <p>Represented my year level in the college&rsquo;s annual Criminology Week competition.</p>
+          <span class="when">October 2025</span>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <article class="card award">
+          <span class="kind"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>Certificate</span>
+          <h3>Standard First Aid &amp; Basic Life Support</h3>
+          <p>Completed a two-day course covering emergency response, CPR and basic wound care.</p>
+          <span class="when">March 2025</span>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <article class="card award">
+          <span class="kind"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg>Seminar</span>
+          <h3>Cybercrime Awareness and Prevention</h3>
+          <p>Attended a seminar on online fraud, digital evidence and reporting procedures.</p>
+          <span class="when">August 2025</span>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <article class="card award">
+          <span class="kind"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg>Training</span>
+          <h3>Practicum Training Completion</h3>
+          <p>Finished 240 hours of on-the-job training with a local police station&rsquo;s community relations unit.</p>
+          <span class="when">Summer 2026</span>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <article class="card award">
+          <span class="kind"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>School achievement</span>
+          <h3>Public Safety Officer</h3>
+          <p>Elected to the Criminology Student Council and led its safety and discipline committee.</p>
+          <span class="when">AY 2025&ndash;2026</span>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESUME ============ -->
+<section class="section" id="resume" aria-labelledby="resume-title">
+  <div class="container">
+    <p class="eyebrow">Case file &middot; Summary</p>
+    <h2 class="section-title" id="resume-title">Resume</h2>
+    <p class="section-lead">A short curriculum vitae covering education, experience, skills and contact details.</p>
+
+    <div class="sheet">
+      <div class="sheet-head">
+        <div>
+          <h3>Julius Alistre Julhani</h3>
+          <p>BS Criminology student &middot; Aspiring crime scene investigator</p>
+        </div>
+        <a class="btn btn-solid" href="resume.pdf" download>Download Resume (PDF)</a>
+      </div>
+      <div class="sheet-body">
+        <div class="row g-5">
+          <div class="col-lg-8">
+            <div class="sheet-block">
+              <h4>Education</h4>
+              <div class="entry"><strong>Bachelor of Science in Criminology</strong><span class="meta">Dr.Aurelio Mendoza Memorial Colleges &middot; 2023 to present &middot; Expected graduation 2027</span><p>Dean&rsquo;s Lister, AY 2024&ndash;2025. Coursework in criminalistics, dactylography, criminal law and court testimony.</p></div>
+              <div class="entry"><strong>Senior High School, HUMSS</strong><span class="meta">Loyola High School &middot; 2021 to 2023 &middot; With Honors</span></div>
+            </div>
+            <div class="sheet-block">
+              <h4>Experience</h4>
+              <div class="entry"><strong>Practicum Trainee, Community Relations Unit</strong><span class="meta">Ipil Police Station &middot; Summer 2026 &middot; 240 hours</span><p>Assisted with community safety talks, filing of reports and public information materials.</p></div>
+              <div class="entry"><strong>Public Safety Officer</strong><span class="meta">Criminology Student Council &middot; AY 2025&ndash;2026</span><p>Led the safety and discipline committee during college events.</p></div>
+              <div class="entry"><strong>Volunteer, Barangay Safety Awareness Campaign</strong><span class="meta">Community outreach &middot; 2026</span><p>Coordinated planning, posters and the closing talk for residents.</p></div>
+            </div>
+            <div class="sheet-block">
+              <h4>Certifications</h4>
+              <div class="entry"><strong>Standard First Aid &amp; Basic Life Support</strong><span class="meta">March 2025</span></div>
+              <div class="entry"><strong>Seminar: Cybercrime Awareness and Prevention</strong><span class="meta">August 2025</span></div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="sheet-block">
+              <h4>Skills</h4>
+              <ul class="chips">
+                <li class="chip">Report writing</li>
+                <li class="chip">Critical thinking</li>
+                <li class="chip">Research</li>
+                <li class="chip">Scene documentation</li>
+                <li class="chip">Communication</li>
+                <li class="chip">Leadership</li>
+                <li class="chip">MS Office</li>
+              </ul>
+            </div>
+            <div class="sheet-block">
+              <h4>Contact</h4>
+              <ul class="contact-lines">
+                <li><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg><span>Juliusjulhani@gmail.com</span></li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span>+63 912 345 6789</span></li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span>Philippines</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section alt" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <p class="eyebrow">Case file &middot; Reach out</p>
+    <h2 class="section-title" id="contact-title">Contact</h2>
+    <p class="section-lead">Open to internships, mentoring and conversations about criminology and community safety.</p>
+
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="card card-pad h-100">
+          <span class="card-label">Contact information</span>
+          <ul class="contact-list">
+            <li>
+              <svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>
+              <div><small>Email</small><span class="val"><a href="mailto:Juliusjulhani@gmail.com" id="emailText">Juliusjulhani@gmail.com</a></span><button class="copy-btn" id="copyEmail" type="button">Copy</button></div>
+            </li>
+            <li>
+              <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>
+              <div><small>Phone</small><span class="val">+63 912 345 6789</span></div>
+            </li>
+            <li>
+              <svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>
+              <div><small>Location</small><span class="val">Philippines</span></div>
+            </li>
+          </ul>
+          <div class="social">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-facebook"/></svg>Facebook</a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="card card-pad h-100">
+          <span class="card-label">Send a message</span>
+          <form id="contactForm" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label class="form-label" for="cf-name">Your name</label>
+                <input class="form-control" id="cf-name" name="name" type="text" autocomplete="name" placeholder="Full name" required>
+                <div class="invalid-feedback">Please enter your name.</div>
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label" for="cf-email">Your email</label>
+                <input class="form-control" id="cf-email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required>
+                <div class="invalid-feedback">Please enter a valid email address.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="cf-subject">Subject</label>
+                <input class="form-control" id="cf-subject" name="subject" type="text" placeholder="What is this about?" required>
+                <div class="invalid-feedback">Please add a subject.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="cf-message">Message</label>
+                <textarea class="form-control" id="cf-message" name="message" rows="5" placeholder="Write your message here" required></textarea>
+                <div class="invalid-feedback">Please write a message.</div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-solid" type="submit">Send Message</button>
+              </div>
+              <div class="col-12" id="formStatus" role="status" aria-live="polite" hidden>
+                <div class="form-note">Thank you. This page keeps your message on your screen only and does not send it anywhere. To reach me, email <strong>Juliusjulhani@gmail.com</strong>.</div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<div class="tape" aria-hidden="true"></div>
+<footer class="site-footer band">
+  <div class="container">
+    <div class="inner">
+      <div>
+        <span class="foot-name">Julius Julhani</span>
+        <p>BS Criminology &middot; Dr. Aurelio Mendoza Memorial Colleges</p>
+      </div>
+      <ul class="foot-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <p>&copy; 2026 Julius julhani. Built with HTML, CSS and Bootstrap 5.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+  var root = document.documentElement;
+
+  var themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var cur = root.getAttribute('data-theme');
+      if (!cur) { cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      root.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+    });
+  }
+
+  var copyBtn = document.getElementById('copyEmail');
+  var emailEl = document.getElementById('emailText');
+  if (copyBtn && emailEl) {
+    var selectEmail = function () {
+      try {
+        var r = document.createRange();
+        r.selectNodeContents(emailEl);
+        var s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+      } catch (e) {}
+      copyBtn.textContent = 'Selected';
+    };
+    copyBtn.addEventListener('click', function () {
+      try {
+        navigator.clipboard.writeText(emailEl.textContent).then(function () {
+          copyBtn.textContent = 'Copied';
+          setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1800);
+        }, selectEmail);
+      } catch (e) { selectEmail(); }
+    });
+  }
+
+  var form = document.getElementById('contactForm');
+  var status = document.getElementById('formStatus');
+  if (form) {
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        if (status) { status.hidden = true; }
+        return;
+      }
+      form.classList.remove('was-validated');
+      form.reset();
+      if (status) { status.hidden = false; }
+    });
+  }
+
+  try {
+    new bootstrap.ScrollSpy(document.body, { target: '#mainNav', rootMargin: '0px 0px -60% 0px' });
+    var menu = document.getElementById('navMenu');
+    document.querySelectorAll('#mainNav a.nav-link').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (menu.classList.contains('show')) { bootstrap.Collapse.getOrCreateInstance(menu).hide(); }
+      });
+    });
+  } catch (e) {}
+})();
+</script>
+
+</body>
+</html>
